@@ -1,0 +1,63 @@
+---
+import ArrowRight from "./ArrowRight.astro";
+import ProjectItem from "./ProjectItem.astro";
+
+const PROYECT_NAMES = [
+  "BizTrack",
+  "Quickly",
+  "BookSpeare",
+  "GlimCar",
+  "Ownerbeard",
+];
+---
+
+<section
+  data-dev-name-opacity="1"
+  id="profile-overview"
+  class="sticky top-0 h-screen bg-[#ffff] text-black"
+>
+  <header class="text-black h-screen grid items-end place-items-center">
+    <section class="flex px-[0.8rem] gap-20 justify-end max-w-screen-xl pt-16">
+      <article class="flex flex-col gap-24 basis-8/12">
+        <h1 class="text-9xl font-medium">I'm Stiven Zapata</h1>
+        <h2 class="text-4xl">
+          Designing purposeful products with meticulous detail, shaping the
+          future of after-school virtual spaces at Ender.
+        </h2>
+      </article>
+
+      <aside class="flex flex-col justify-end gap-y-6 w-full basis-4/12">
+        <h3 class="uppercase text-[1rem] text-[#6b6d75] font-medium">
+          Selected Projects
+        </h3>
+        <ul>
+          {
+            PROYECT_NAMES.map((projectName) => (
+              <ProjectItem projectName={projectName} />
+            ))
+          }
+        </ul>
+      </aside>
+    </section>
+
+    <footer
+      class="relative flex text-xl overflow-x-hidden bg-[#dfff9c] text-black w-full"
+    >
+      <ul class="py-5 flex animate-marquee whitespace-nowrap">
+        <li class="mx-16">4+ años de experiencia</li>
+        <li class="mx-16">Frontend Developer</li>
+        <li class="mx-16">Backend Developer</li>
+        <li class="mx-16">Movile Developer</li>
+        <li class="mx-16">Marquee Item 5</li>
+      </ul>
+
+      <ul class="py-5 absolute flex top-0 animate-marquee2 whitespace-nowrap">
+        <li class="mx-16">4+ años de experiencia</li>
+        <li class="mx-16">Frontend Developer</li>
+        <li class="mx-16">Backend Developer</li>
+        <li class="mx-16">Movile Developer</li>
+        <li class="mx-16">Marquee Item 5</li>
+      </ul>
+    </footer>
+  </header>
+</section>

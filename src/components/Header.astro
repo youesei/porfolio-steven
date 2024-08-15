@@ -1,0 +1,326 @@
+---
+import ChangeLanguage from "./ChangeLanguage.astro";
+import ChangeTheme from "./ChangeTheme.astro";
+---
+
+<header class="flex fixed justify-between px-12 top-3 w-full z-40">
+  <section class="text-black flex items-center gap-2">
+    <img
+      loading="lazy"
+      class="w-full aspect-auto object-cover max-w-6 h-full max-h-6 rounded-full"
+      src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    />
+    <p id="dev-name">Stiven.</p>
+  </section>
+
+  <nav
+    id="modal-menu"
+    class="text-black
+    rounded-full
+    py-2
+    px-3
+    relative
+    gap-4
+    backdrop-blur-md bg-[rgba(255,255,255,0.5)]"
+  >
+    <ul id="menu-list" class="flex gap-4 z-10 items-center">
+      <!-- <li class="flex">
+        <ChangeLanguage />
+      </li> -->
+      <li>
+        <a
+          class="px-4 py-1 block transition-all duration-200
+        ease-in-out"
+          class="buttom-about">About</a
+        >
+      </li>
+      <li>
+        <a
+          class="px-4 py-1 block transition-all duration-200
+        ease-in-out"
+          href="www.google.com">Projects</a
+        >
+      </li>
+      <li>
+        <a
+          class="px-4 py-1 block transition-all duration-200
+        ease-in-out"
+          href="www.google.com">Contact</a
+        >
+      </li>
+      <!-- <li class="flex">
+        <ChangeTheme />
+      </li> -->
+    </ul>
+    <div
+      id="menu-backdrop"
+      class="absolute top-0 -z-20 opacity-0 bg-black rounded-full translate-x-[var(--left)] translate-y-[var(--top)] w-[var(--width)] h-[var(--height)] transition-all duration-200
+        ease-in-out"
+    >
+    </div>
+  </nav>
+</header>
+
+<aside
+  class="overlay cursor-pointer fixed h-screen hidden justify-end top-0 w-full bg-black/60 z-40"
+>
+  <main
+    class="about-content h-screen cursor-default relative z-50 w-full max-w-[50.5rem] bg-gray-400 p-10 grid gap-y-16 overflow-y-scroll"
+  >
+    <header class="flex justify-between items-center">
+      <img
+        loading="lazy"
+        class="w-full object-cover aspect-auto max-w-20 h-full max-h-20 rounded-full"
+        src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="Profile Image"
+      />
+      <button
+        class="button-close text-[1.4rem] px-8 py-2 border rounded-full border-black"
+      >
+        Close
+      </button>
+    </header>
+    <section class="grid gap-y-28">
+      <article class="grid gap-y-14">
+        <p class="text-[2.1rem]">
+          An experienced designer based in the beautiful landscapes of Kerala,
+          India.
+        </p>
+        <p class="text-3xl">
+          I've spent most of my career working remotely and I absolutely love
+          it. The flexibility and productivity it brings are my secret weapons.
+        </p>
+      </article>
+      <article class="grid gap-y-14">
+        <section class="grid gap-y-8">
+          <h2 class="text-4xl">Creating Delightful Experiences</h2>
+          <p class="text-2xl">
+            I thrive on creating designs that make a difference. Whether it's
+            collaborating with teams or working solo, my goal is to make user
+            experiences seamless, beautiful and enjoyable.
+          </p>
+        </section>
+
+        <section class="grid gap-y-8">
+          <h2 class="text-4xl">Working Remotelya</h2>
+          <p class="text-2xl">
+            Remote work is my lifestyle. I've honed my skills working with teams
+            from all over, proving that distance is no barrier to great
+            collaboration.
+          </p>
+        </section>
+
+        <section class="grid gap-y-8">
+          <h2 class="text-4xl">On the Hunt for Exciting Opportunities</h2>
+          <p class="text-2xl grid gap-y-10">
+            I'm on the lookout for new challenges that push my limits and let me
+            bring my best to the table. If you have an exciting product that
+            needs a creative touch, count me in!
+            <span> Let's connect and make something awesome together!.</span>
+          </p>
+        </section>
+      </article>
+    </section>
+    <footer>
+      <ul class="flex gap-x-8">
+        <li class="text-2xl border-b pb-2">
+          <a href="www.google.com">LinkedIn</a>
+        </li>
+        <li class="text-2xl border-b pb-2">
+          <a href="www.google.com">correo@correo.com</a>
+        </li>
+      </ul>
+    </footer>
+  </main>
+
+  <!-- <button
+    class="transform transition-transform duration-20000 ease-in-out close-button py-8 px-6 fixed text-lg bg-black rounded-full top-3 left-10 text-white"
+  >
+    Close
+  </button> -->
+
+  <div
+    class="close-div opacity-0 py-8 px-6 fixed text-lg bg-black rounded-full top-0 left-0 text-white"
+  >
+    Close
+  </div>
+</aside>
+
+<style>
+  .close-div {
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition:
+      transform 0.1s ease-out,
+      opacity 0.3s ease-in-out;
+  }
+</style>
+
+<script>
+  // document.addEventListener("DOMContentLoaded", () => {
+  const devName = document.querySelector("#dev-name") as HTMLElement; // Elemento que debe ocultarse en el nav
+
+  const options = {
+    root: null,
+    threshold: [0.1, 0.9],
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { isIntersecting } = entry;
+      console.log("ENTRY: ", entry);
+      if (isIntersecting) {
+        console.log("AAAAAAAAAA");
+        // const opacity = entry.target.getAttribute(
+        //   "data-dev-name-opacity",
+        // ) as string;
+        // devName.style.opacity = opacity;
+        // console.log(opacity);
+      }
+    });
+  }, options);
+
+  // observer.observe(
+  //   document.querySelector("#profile-overview") as HTMLElement,
+  // );
+  observer.observe(document.querySelector("#projects-list") as HTMLElement);
+  observer.observe(document.querySelector("#footer") as HTMLElement);
+  // });
+</script>
+
+<script>
+  const ovelay = document.querySelector(".overlay") as HTMLElement;
+  const buttonAbout = document.querySelector(".buttom-about");
+  const buttonClose = document.querySelector(".button-close ");
+  const aboutContent = document.querySelector(".about-content") as HTMLElement;
+  const divClose = document.querySelector(".close-div") as HTMLButtonElement;
+  let mouseX = 0;
+  let mouseY = 0;
+  let isMoving = false;
+
+  buttonAbout?.addEventListener("click", () => {
+    if (ovelay.classList.contains("hidden")) {
+      ovelay.classList.add("flex");
+      ovelay.classList.remove("hidden");
+    }
+  });
+
+  buttonClose?.addEventListener("click", () => {
+    if (!ovelay.classList.contains("hidden")) {
+      ovelay.classList.add("hidden");
+    }
+  });
+
+  ovelay?.addEventListener("click", () => {
+    console.log("aaaaaaaaa");
+    if (!ovelay.classList.contains("hidden")) {
+      ovelay.classList.add("hidden");
+    }
+  });
+
+  aboutContent.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
+  document.addEventListener("mouseleave", () => {
+    // When the mouse leaves the window, hide the follower
+    divClose.style.opacity = "0";
+  });
+
+  document.addEventListener("mouseenter", () => {
+    // When the mouse re-enters the window, show the follower
+    divClose.style.opacity = "1";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!isMoving) {
+      updatePosition();
+    }
+  });
+
+  function updatePosition() {
+    isMoving = true;
+    divClose.style.transform = `translate3d(${mouseX - divClose.clientWidth / 2}px, ${mouseY - divClose.clientHeight / 2}px, 0)`;
+    requestAnimationFrame(() => {
+      if (mouseX !== null && mouseY !== null) {
+        isMoving = false;
+      }
+    });
+  }
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const listItems = document.querySelectorAll(
+      "#menu-list li",
+    ) as NodeListOf<HTMLElement>;
+    const menuBackDrop = document.querySelector(
+      "#menu-backdrop",
+    ) as HTMLElement;
+    const modalMenu = document.querySelector("#modal-menu") as HTMLElement;
+
+    let lastSelectedItem: HTMLElement | null = null;
+
+    // Obtener el padding del contenedor
+    const modalMenuStyle = window.getComputedStyle(modalMenu);
+    const paddingLeft = parseFloat(modalMenuStyle.paddingLeft);
+
+    // Posicionar el menu-backdrop en el primer elemento al cargar la página
+    if (listItems.length > 0) {
+      const firstItem = listItems[0];
+      const { left, top, width, height } = firstItem.getBoundingClientRect();
+      const parentRect = modalMenu.getBoundingClientRect();
+
+      const relativeLeft = left - parentRect.left - paddingLeft;
+      const relativeTop = top - parentRect.top;
+
+      menuBackDrop.style.setProperty("--left", `${relativeLeft}px`);
+      menuBackDrop.style.setProperty("--top", `${relativeTop}px`);
+      menuBackDrop.style.setProperty("--width", `${width}px`);
+      menuBackDrop.style.setProperty("--height", `${height}px`);
+    }
+
+    listItems.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        // Cambiar el color del texto del <li> actual a blanco
+        item.style.color = "white";
+
+        // Si hay un elemento previamente seleccionado, restablecer su color
+        if (lastSelectedItem && lastSelectedItem !== item) {
+          lastSelectedItem.style.color = "black";
+        }
+
+        // Actualizar el último <li> seleccionado
+        lastSelectedItem = item;
+
+        // Obtener las dimensiones y posición del <li> actual
+        const { left, top, width, height } = item.getBoundingClientRect();
+        const parentRect = modalMenu.getBoundingClientRect();
+
+        // Calcular la posición relativa al contenedor
+        const relativeLeft = left - parentRect.left - paddingLeft;
+        const relativeTop = top - parentRect.top;
+
+        // Ajustar las propiedades CSS del backdrop
+        menuBackDrop.style.setProperty("--left", `${relativeLeft}px`);
+        menuBackDrop.style.setProperty("--top", `${relativeTop}px`);
+        menuBackDrop.style.setProperty("--width", `${width}px`);
+        menuBackDrop.style.setProperty("--height", `${height}px`);
+        menuBackDrop.style.opacity = "1";
+        menuBackDrop.style.visibility = "visible";
+      });
+    });
+
+    // Mantener el backdrop visible mientras el mouse esté dentro del nav
+    modalMenu.addEventListener("mouseleave", () => {
+      if (lastSelectedItem) {
+        lastSelectedItem.style.color = "black"; // Cambiar el color del texto del último <li> a negro
+      }
+      menuBackDrop.style.opacity = "0";
+      menuBackDrop.style.visibility = "hidden";
+      lastSelectedItem = null; // Reiniciar la variable
+    });
+  });
+</script>

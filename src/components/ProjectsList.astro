@@ -1,0 +1,60 @@
+---
+import ProjectSection from "./ProjectSection.astro";
+
+const PROJECTS_LIST = [
+  {
+    id: 1,
+    projectName: "BizTrack",
+    projectDescription:
+      "One platform to manage and optimize your entire business operations.",
+    role: "Frontend Developer",
+    date: "2023 - present",
+    tagList: ["Design system", "Product design", "Web design"],
+  },
+  {
+    id: 2,
+    projectName: "Quickly",
+    projectDescription:
+      "One platform to manage and optimize your entire business operations.",
+    role: "Frontend Developer",
+    date: "2023",
+    tagList: ["Design system", "Product design", "Web design"],
+  },
+  {
+    id: 3,
+    projectName: "BookSpeare",
+    projectDescription:
+      "One platform to manage and optimize your entire business operations.",
+    role: "Frontend Developer, Backend Developer",
+    date: "2022",
+    tagList: ["Design system", "Product design", "Web design"],
+  },
+  {
+    id: 4,
+    projectName: "GlimCar",
+    projectDescription:
+      "One platform to manage and optimize your entire business operations.",
+    role: "Frontend Developer, Backend Developer",
+    date: "2021",
+    tagList: ["Design system", "Product design", "Web design"],
+  },
+  {
+    id: 5,
+    projectName: "Ownerbeard",
+    projectDescription:
+      "One platform to manage and optimize your entire business operations.",
+    role: "Frontend Developer, Backend Developer",
+    date: "2020",
+    tagList: ["Design system", "Product design", "Web design"],
+  },
+];
+---
+
+<section
+  data-dev-name-opacity="0"
+  id="projects-list"
+  class="relative z-30 px-12 h-full min-h-screen grid place-items-center bg-red-800"
+>
+  <!-- <div data-dev-name-opacity="0" id="projects-list2"></div> -->
+  {PROJECTS_LIST.map((project) => <ProjectSection {...project} />)}
+</section>

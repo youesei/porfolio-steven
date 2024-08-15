@@ -1,0 +1,9 @@
+---
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<li class="text-sm uppercase border rounded-full py-1 px-3">{tag}</li>

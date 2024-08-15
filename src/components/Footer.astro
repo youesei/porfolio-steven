@@ -1,0 +1,94 @@
+---
+import ArrowUp from "./ArrowUp.astro";
+---
+
+<footer
+  id="footer"
+  class="sticky top-0 h-screen text-white"
+  data-dev-name-opacity="0"
+>
+  <header class="relative z-20 bg-gray-300 h-screen px-12">
+    <h1>AAAAAAAAAAAAAAAAAAAAA</h1>
+  </header>
+  <main class="sticky bottom-0 bg-black h-screen px-12 flex flex-col gap-y-36">
+    <h3
+      class="text-[5.5rem] tracking-tight leading-none max-w-3xl mt-[-1.6rem]"
+    >
+      Nice to meet you, Let’s connect.
+    </h3>
+    <section class="flex flex-col gap-y-7">
+      <p class="text-2xl text-gray-600">Find me elsewhere on web.</p>
+
+      <ul class="flex gap-x-8">
+        <li class="text-2xl">
+          <a
+            style="--underline-color: #4b5563; --underline-before-color: #fff;"
+            class="underline-hover pb-2"
+            href="https://www.google.com"
+            target="_blank"
+            referrerpolicy="no-referrer"
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li class="text-2xl">
+          <a
+            style="--underline-color: #4b5563; --underline-before-color: #fff;"
+            class="underline-hover pb-2"
+            href="https://www.google.com"
+            target="_blank"
+            referrerpolicy="no-referrer"
+          >
+            correo@correo.com
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="flex justify-between">
+      <p class="text-xl">&copy2024 - Esteven Zapata</p>
+      <button
+        class="bg-white go-top w-16 h-16 rounded-full flex items-center justify-center"
+      >
+        <ArrowUp />
+      </button>
+    </footer>
+  </main>
+</footer>
+
+<script>
+  const buttonGoTop = document.querySelector(".go-top") as HTMLElement;
+
+  buttonGoTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
+
+<style is:global>
+  @keyframes arrow-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-40px);
+    }
+  }
+
+  @keyframes arrow-down {
+    0% {
+      transform: translateY(40px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .go-top:hover svg path {
+    animation:
+      arrow-up 0.2s ease-in-out forwards,
+      arrow-down 0.2s ease-in-out forwards 0.2s;
+  }
+</style>
