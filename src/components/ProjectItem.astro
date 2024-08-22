@@ -11,21 +11,24 @@ const { projectName } = Astro.props;
 <li>
   <a
     style="--underline-color: #e5e7eb; --underline-before-color: #000;"
-    class="underline-hover py-5 cursor-pointer flex items-center justify-between text-xl"
+    class="underline-hover py-3 md:py-4-em cursor-pointer flex items-center justify-between"
     data-project-name={projectName}
   >
-    <span>{projectName}</span>
+    <span class="lg:text-xl-em text-base leading-normal">{projectName}</span>
     <div class="relative">
-      <div class="h-6 absolute bg-white z-30 -top-3 w-4 -left-8"></div>
-      <span class="absolute arrow-right">
-        <ArrowRight />
+      <div
+        class="h-6 hidden lg:block absolute bg-white z-30 -top-3 w-4 -left-8"
+      >
+      </div>
+      <span class="lg:absolute arrow-right">
+        <ArrowRight width="1rem" height="1rem" />
       </span>
     </div>
   </a>
 </li>
 
 <style>
-  li a .arrow-right {
+  .arrow-right {
     display: flex;
     align-items: center;
     left: -2rem;
@@ -41,11 +44,11 @@ const { projectName } = Astro.props;
 <script>
   const links = document.querySelectorAll("a[data-project-name]");
 
-  links.forEach((link) => {
-    link.addEventListener("click", () => {
-      const projectName = link.getAttribute("data-project-name");
-      const target = document.querySelector(`#${projectName}`) as HTMLElement;
-      target.scrollIntoView({
+  links?.forEach((link) => {
+    link?.addEventListener("click", () => {
+      const projectName = link?.getAttribute("data-project-name");
+      const target = document?.querySelector(`#${projectName}`) as HTMLElement;
+      target?.scrollIntoView({
         behavior: "smooth",
       });
     });

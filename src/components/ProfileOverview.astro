@@ -1,63 +1,44 @@
 ---
-import ArrowRight from "./ArrowRight.astro";
-import ProjectItem from "./ProjectItem.astro";
-
-const PROYECT_NAMES = [
-  "BizTrack",
-  "Quickly",
-  "BookSpeare",
-  "GlimCar",
-  "Ownerbeard",
-];
+import Marquee from "./Marquee.astro";
+import ProjecstList from "./ProjecstList.astro";
 ---
 
 <section
-  data-dev-name-opacity="1"
   id="profile-overview"
-  class="sticky top-0 h-screen bg-[#ffff] text-black"
+  class="lg:sticky lg:top-0 h-auto w-full flex flex-col items-center justify-between lg:h-dvh bg-white text-black pt-16"
 >
-  <header class="text-black h-screen grid items-end place-items-center">
-    <section class="flex px-[0.8rem] gap-20 justify-end max-w-screen-xl pt-16">
-      <article class="flex flex-col gap-24 basis-8/12">
-        <h1 class="text-9xl font-medium">I'm Stiven Zapata</h1>
-        <h2 class="text-4xl">
-          Designing purposeful products with meticulous detail, shaping the
-          future of after-school virtual spaces at Ender.
-        </h2>
-      </article>
-
-      <aside class="flex flex-col justify-end gap-y-6 w-full basis-4/12">
-        <h3 class="uppercase text-[1rem] text-[#6b6d75] font-medium">
-          Selected Projects
-        </h3>
-        <ul>
-          {
-            PROYECT_NAMES.map((projectName) => (
-              <ProjectItem projectName={projectName} />
-            ))
-          }
-        </ul>
-      </aside>
-    </section>
-
-    <footer
-      class="relative flex text-xl overflow-x-hidden bg-[#dfff9c] text-black w-full"
+  <main
+    class="flex my-auto px-5 md:py-16 justify-between lg:py-0 lg:px-12-em flex-wrap md:flex-nowrap gap-y-14 md:gap-x-20-em w-full"
+  >
+    <article
+      class="flex flex-col max-w-full md:max-w-2.5xl-em w-full md:basis-3.5/5 md:col-span-2 pt-14 gap-6 md:pt-0 lg:gap-18-em"
     >
-      <ul class="py-5 flex animate-marquee whitespace-nowrap">
-        <li class="mx-16">4+ años de experiencia</li>
-        <li class="mx-16">Frontend Developer</li>
-        <li class="mx-16">Backend Developer</li>
-        <li class="mx-16">Movile Developer</li>
-        <li class="mx-16">Marquee Item 5</li>
-      </ul>
+      <h1
+        class="lg:text-8.5em text-6.5xl max-w-110 md:max-w-full xs:text-7.5xl leading-extra-tight lg:leading-super-tight font-medium"
+      >
+        I'm Stiven Zapata
+      </h1>
+      <h2 class="text-xl max-w-110 md:max-w-full md:text-2em leading-snug">
+        Designing purposeful products with meticulous detail, shaping the future
+        of after-school virtual spaces at Ender.
+      </h2>
+    </article>
 
-      <ul class="py-5 absolute flex top-0 animate-marquee2 whitespace-nowrap">
-        <li class="mx-16">4+ años de experiencia</li>
-        <li class="mx-16">Frontend Developer</li>
-        <li class="mx-16">Backend Developer</li>
-        <li class="mx-16">Movile Developer</li>
-        <li class="mx-16">Marquee Item 5</li>
-      </ul>
-    </footer>
-  </header>
+    <aside
+      class="flex flex-col md:basis-1.5/5 md:self-end pb-14 md:pb-0 md:justify-end gap-y-4 md:gap-y-6-em w-full"
+    >
+      <h3
+        class="uppercase text-xs-rem lg:text-sm-em text-[#6b6d75] font-medium tracking-wider-em lg:tracking-widest-em"
+      >
+        Selected Projects
+      </h3>
+      <ProjecstList />
+    </aside>
+  </main>
+
+  <footer
+    class="relative gap-x-4 md:gap-x-8 leading-normal text-base lg:text-xl-em flex overflow-hidden bg-[#dfff9c] text-black w-full"
+  >
+    <Marquee />
+  </footer>
 </section>

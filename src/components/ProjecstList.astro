@@ -1,0 +1,19 @@
+---
+import ProjectItem from "./ProjectItem.astro";
+
+const PROYECT_NAMES = [
+  "BizTrack",
+  "Quickly",
+  "BookSpeare",
+  "GlimCar",
+  "Ownerbeard",
+];
+---
+
+<ul>
+  {
+    PROYECT_NAMES.map((projectName) => (
+      <ProjectItem projectName={projectName} />
+    ))
+  }
+</ul>

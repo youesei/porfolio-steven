@@ -4,26 +4,29 @@ import ArrowUp from "./ArrowUp.astro";
 
 <footer
   id="footer"
-  class="sticky top-0 h-screen text-white"
+  class="sticky top-0 h-dvh text-white"
   data-dev-name-opacity="0"
 >
-  <header class="relative z-20 bg-gray-300 h-screen px-12">
+  <header class="relative z-20 bg-gray-300 h-dvh px-12">
     <h1>AAAAAAAAAAAAAAAAAAAAA</h1>
   </header>
-  <main class="sticky bottom-0 bg-black h-screen px-12 flex flex-col gap-y-36">
+  <main
+    class="xl:sticky xl:bottom-0 py-16 bg-black h-dvh px-5 xl:px-12 flex flex-col justify-between xl:gap-y-36"
+  >
     <h3
-      class="text-[5.5rem] tracking-tight leading-none max-w-3xl mt-[-1.6rem]"
+      class="xl:text-[5.5rem] text-[2.5rem] tracking-tight leading-none max-w-3xl xl:mt-[-1.6rem]"
     >
       Nice to meet you, Let’s connect.
     </h3>
-    <section class="flex flex-col gap-y-7">
-      <p class="text-2xl text-gray-600">Find me elsewhere on web.</p>
 
-      <ul class="flex gap-x-8">
-        <li class="text-2xl">
+    <section class="flex flex-col gap-y-7">
+      <p class="xl:text-2xl text-xl text-gray-600">Find me elsewhere on web.</p>
+
+      <ul id="contacts" class="flex flex-col xl:flex-row gap-y-4 xl:gap-x-8">
+        <li class="text-xl xl:text-2xl">
           <a
             style="--underline-color: #4b5563; --underline-before-color: #fff;"
-            class="underline-hover pb-2"
+            class="underline-hover pb-2 inline-block"
             href="https://www.google.com"
             target="_blank"
             referrerpolicy="no-referrer"
@@ -31,10 +34,10 @@ import ArrowUp from "./ArrowUp.astro";
             LinkedIn
           </a>
         </li>
-        <li class="text-2xl">
+        <li class="text-xl xl:text-2xl">
           <a
             style="--underline-color: #4b5563; --underline-before-color: #fff;"
-            class="underline-hover pb-2"
+            class="underline-hover pb-2 inline-block"
             href="https://www.google.com"
             target="_blank"
             referrerpolicy="no-referrer"
@@ -45,12 +48,13 @@ import ArrowUp from "./ArrowUp.astro";
       </ul>
     </section>
 
-    <footer class="flex justify-between">
-      <p class="text-xl">&copy2024 - Esteven Zapata</p>
+    <footer class="flex justify-between items-center">
+      <p class="xl:text-xl text-base">&copy2024 - Esteven Zapata</p>
       <button
-        class="bg-white go-top w-16 h-16 rounded-full flex items-center justify-center"
+        class="bg-white go-top xl:w-16 xl:h-16 w-10 h-10 rounded-full flex items-center justify-center"
       >
-        <ArrowUp />
+        <!-- <ArrowUp width="22" /> -->
+        <ArrowUp width="14" />
       </button>
     </footer>
   </main>

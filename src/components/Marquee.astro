@@ -1,0 +1,31 @@
+---
+import MarqueeLayout from "../layouts/MarqueeLayout.astro";
+import MarqueeItem from "./MarqueeItem.astro";
+import MarqueeSeparator from "./MarqueeSeparator.astro";
+
+const MARQUEE_TITLES = [
+  "4+ años de experiencia",
+  "Frontend Developer",
+  "Backend Developer",
+  "Movile Developer",
+  "Testing",
+] as const;
+---
+
+<MarqueeLayout class="animate-marquee">
+  {
+    MARQUEE_TITLES.map(title => (
+        <MarqueeItem text={title} />
+        <MarqueeSeparator />
+    ))
+  }
+</MarqueeLayout>
+
+<MarqueeLayout class="absolute top-0 animate-marquee2">
+  {
+    MARQUEE_TITLES.map(title => (
+        <MarqueeItem text={title} />
+        <MarqueeSeparator />
+    ))
+  }
+</MarqueeLayout>

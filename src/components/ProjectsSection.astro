@@ -1,5 +1,5 @@
 ---
-import ProjectSection from "./ProjectSection.astro";
+import Project from "./Project.astro";
 
 const PROJECTS_LIST = [
   {
@@ -53,8 +53,7 @@ const PROJECTS_LIST = [
 <section
   data-dev-name-opacity="0"
   id="projects-list"
-  class="relative z-30 px-12 h-full min-h-screen grid place-items-center bg-red-800"
+  class="relative z-30 px-5 xl:px-12 h-full grid place-items-center bg-red-800"
 >
-  <!-- <div data-dev-name-opacity="0" id="projects-list2"></div> -->
-  {PROJECTS_LIST.map((project) => <ProjectSection {...project} />)}
+  {PROJECTS_LIST.map((project) => <Project {...project} />)}
 </section>

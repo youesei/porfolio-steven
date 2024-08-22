@@ -1,0 +1,230 @@
+<div
+  id="overlay"
+  class="fixed inset-0 z-50 bg-black bg-opacity-50 transition-opacity duration-1000 ease-in-out opacity-0 pointer-events-none"
+>
+  <button
+    id="close-button"
+    class="opacity-0 h-20.5-em w-20.5-em cursor-pointer fixed bg-black rounded-full text-white"
+  >
+    Close
+  </button>
+</div>
+
+<!-- -right-[808px] -->
+<aside
+  class="aside-about h-dvh px-6 pt-6 pb-12 cursor-default fixed z-50 -right-full w-full lg:max-w-2.9xl-em bg-gray-400 py-10 lg:p-10-em grid gap-y-12-em overflow-y-scroll transition-right duration-300 ease"
+>
+  <!-- lg:min-w-full lg:max-w-2.9xl-em lg:w-5xl-screen -->
+  <header class="flex justify-between items-center">
+    <img
+      loading="lazy"
+      class="w-16 h-16 lg:w-20-em lg:h-20-em object-cover aspect-square max-w-full rounded-full"
+      src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      alt="Profile Image"
+    />
+    <button
+      id="close-about"
+      class="lg:text-xl-em text-xl px-6 py-2 lg:py-2-em lg:px-6-em border rounded-full border-black"
+    >
+      Close
+    </button>
+  </header>
+
+  <section class="grid gap-y-12-em">
+    <article
+      class="text-container mb-8 translate-x-4p opacity-0 transition-transform duration-1200 ease-in-out"
+    >
+      <p class="lg:text-2em text-2xl leading-normal">
+        An experienced designer based in the beautiful landscapes of Kerala,
+        India.
+        <br />
+        <br />
+        I've spent most of my career working remotely and I absolutely love it. The
+        flexibility and productivity it brings are my secret weapons.
+      </p>
+    </article>
+
+    <article
+      class="grid gap-y-10-em lg:gap-y-12-em text-container translate-x-4p opacity-0 transition-transform duration-1300 ease-in-out"
+    >
+      <section class="grid gap-y-4 lg:gap-y-4-em">
+        <h2 class="lg:text-2em text-2.5xl">Creating Delightful Experiences</h2>
+        <p class="lg:text-xl-em text-xl text-gray-600">
+          I thrive on creating designs that make a difference. Whether it's
+          collaborating with teams or working solo, my goal is to make user
+          experiences seamless, beautiful and enjoyable.
+        </p>
+      </section>
+
+      <section class="grid gap-y-4 lg:gap-y-4-em">
+        <h2 class="lg:text-2em text-2.5xl">Working Remotelya</h2>
+        <p class="lg:text-xl-em text-xl text-gray-600">
+          Remote work is my lifestyle. I've honed my skills working with teams
+          from all over, proving that distance is no barrier to great
+          collaboration.
+        </p>
+      </section>
+
+      <section class="grid gap-y-4 lg:gap-y-4-em">
+        <h2 class="lg:text-2em text-2.5xl">
+          On the Hunt for Exciting Opportunities
+        </h2>
+        <p class="lg:text-xl-em text-xl text-gray-600">
+          I'm on the lookout for new challenges that push my limits and let me
+          bring my best to the table. If you have an exciting product that needs
+          a creative touch, count me in!
+          <br />
+          <br />
+          Let's connect and make something awesome together!.
+        </p>
+      </section>
+    </article>
+  </section>
+
+  <footer>
+    <ul class="flex gap-x-10 lg:gap-x-10-em">
+      <li
+        class="lg:text-2xl-em text-base border-b pb-2 text-container translate-x-4p opacity-0 transition-transform duration-1400 ease-in-out"
+      >
+        <a href="www.google.com">LinkedIn</a>
+      </li>
+      <li
+        class="lg:text-2xl-em text-base border-b pb-2 text-container translate-x-4p opacity-0 transition-transform duration-1400 ease-in-out"
+      >
+        <a href="www.google.com">correo@correo.com</a>
+      </li>
+    </ul>
+  </footer>
+</aside>
+
+<style>
+  .close-div {
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition:
+      transform 0.1s ease-out,
+      opacity 0.3s ease-in-out;
+  }
+
+  .open {
+    right: 0;
+  }
+
+  .animate-text {
+    transform: translateX(0%);
+  }
+
+  #close-button {
+    transition:
+      transform 180ms ease-out,
+      opacity 400ms ease-in-out;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const aboutAside = document.querySelector(".aside-about") as HTMLElement;
+    const closeAboutButton = document.querySelector("#close-about");
+    const overlay = document.querySelector("#overlay") as HTMLElement;
+    const aboutButton = document.querySelector("#button-about");
+    const textContainers = document.querySelectorAll(".text-container");
+    const closeButton = document.querySelector("#close-button") as HTMLElement;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let isMoving = false;
+
+    closeAboutButton?.addEventListener("click", () => {
+      document.body.classList.remove("overflow-y-hidden");
+      aboutAside.classList.toggle("open");
+
+      overlay.classList.remove("opacity-100", "pointer-events-auto");
+      overlay.classList.add("opacity-0", "pointer-events-none");
+
+      textContainers.forEach((textContainer) => {
+        textContainer.classList.add("opacity-0", "translate-x-4p");
+        textContainer.classList.remove("opacity-100", "animate-text");
+      });
+    });
+
+    aboutButton?.addEventListener("click", () => {
+      if (overlay.classList.contains("opacity-0")) {
+        document.body.classList.add("overflow-y-hidden");
+        aboutAside.classList.toggle("open");
+
+        overlay.classList.add("opacity-100", "pointer-events-auto");
+        overlay.classList.remove("opacity-0", "pointer-events-none");
+
+        textContainers.forEach((textContainer) => {
+          textContainer.classList.remove("opacity-0", "translate-x-4p");
+          textContainer.classList.add("opacity-100", "animate-text");
+        });
+      } else {
+        aboutAside.classList.toggle("open");
+        document.body.classList.remove("overflow-y-hidden");
+
+        overlay.classList.remove("opacity-100", "pointer-events-auto");
+        overlay.classList.add("opacity-0", "pointer-events-none");
+
+        textContainers.forEach((textContainer) => {
+          textContainer.classList.add("opacity-0", "translate-x-4p");
+          textContainer.classList.remove("opacity-100", "animate-text");
+        });
+      }
+    });
+
+    closeButton?.addEventListener("click", () => {
+      aboutAside.classList.toggle("open");
+      document.body.classList.remove("overflow-y-hidden");
+
+      overlay.classList.remove("opacity-100", "pointer-events-auto");
+      overlay.classList.add("opacity-0", "pointer-events-none");
+
+      textContainers.forEach((textContainer) => {
+        textContainer.classList.add("opacity-0", "translate-x-4p");
+        textContainer.classList.remove("opacity-100", "animate-text");
+      });
+    });
+
+    // overlay?.addEventListener("click", (event) => {
+    //   if (event.target === overlay) {
+    //     aboutAside.classList.toggle("open");
+    //     document.body.classList.remove("overflow-y-hidden");
+
+    //     overlay.classList.remove("opacity-100", "pointer-events-auto");
+    //     overlay.classList.add("opacity-0", "pointer-events-none");
+
+    //     textContainers.forEach((textContainer) => {
+    //       textContainer.classList.add("opacity-0", "translate-x-4p");
+    //       textContainer.classList.remove("opacity-100", "animate-text");
+    //     });
+    //   }
+    // });
+
+    overlay.addEventListener("mouseleave", () => {
+      closeButton.style.opacity = "0";
+    });
+
+    overlay.addEventListener("mouseenter", () => {
+      closeButton.style.opacity = "1";
+    });
+
+    overlay.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isMoving) {
+        updatePosition();
+      }
+    });
+
+    function updatePosition() {
+      isMoving = true;
+      closeButton.style.transform = `translate3d(${mouseX - closeButton.clientWidth / 2}px, ${mouseY - closeButton.clientHeight / 2}px, 0)`;
+      requestAnimationFrame(() => {
+        if (mouseX !== null && mouseY !== null) {
+          isMoving = false;
+        }
+      });
+    }
+  });
+</script>
