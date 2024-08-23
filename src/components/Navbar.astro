@@ -1,24 +1,31 @@
 ---
 import NavItem from "./NavItem.astro";
 
-const NAV_MENUS_NAMES = ["About", "Projects", "Contact"] as const;
+const NAV_MENUS_NAMES = [
+  {
+    id: "about-button",
+    label: "About",
+  },
+  {
+    id: "projects-link",
+    label: "Projects",
+  },
+  {
+    id: "contact-link",
+    label: "Contact",
+  },
+] as const;
 ---
 
 <nav
   id="menu-header"
-  class="text-black rounded-full p-1 xs:py-3 xs:px-2 lg:py-1-em lg:px-2-em relative gap-4 md:backdrop-blur-md md:bg-white-opacity"
+  class="text-black rounded-full p-1 xs:py-2 xs:px-3 lg:py-1-em lg:px-2-em relative gap-4 xs:backdrop-blur-md xs:bg-white-opacity"
 >
   <ul
     id="menu-list"
     class="flex md:gap-2-em z-10 items-center text-base xs:text-base-em"
   >
-    {NAV_MENUS_NAMES.map((menuName) => <NavItem menuName={menuName} />)}
-    <!-- <li class="flex">
-    <ChangeLanguage />
-    </li> -->
-    <!-- <li class="px-4 py-1 flex">
-      <ChangeTheme />
-    </li> -->
+    {NAV_MENUS_NAMES.map(({ label, id }) => <NavItem id={id} label={label} />)}
   </ul>
   <div
     id="menu-backdrop"
@@ -28,6 +35,66 @@ const NAV_MENUS_NAMES = ["About", "Projects", "Contact"] as const;
 </nav>
 
 <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const listItems = document.querySelectorAll(
+      "#menu-list li",
+    ) as NodeListOf<HTMLElement>;
+    const menuBackDrop = document.querySelector(
+      "#menu-backdrop",
+    ) as HTMLElement;
+    const menuHeader = document.querySelector("#menu-header") as HTMLElement;
+
+    let lastSelectedItem: HTMLElement | null = null;
+
+    if (listItems.length > 0) {
+      const firstItem = listItems[0];
+      positionBackdrop(firstItem);
+    }
+
+    listItems.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        item.style.color = "white";
+
+        if (lastSelectedItem && lastSelectedItem !== item) {
+          lastSelectedItem.style.color = "black";
+        }
+
+        lastSelectedItem = item;
+        positionBackdrop(item);
+
+        menuBackDrop.style.opacity = "1";
+        menuBackDrop.style.visibility = "visible";
+      });
+    });
+
+    menuHeader.addEventListener("mouseleave", () => {
+      if (lastSelectedItem) {
+        lastSelectedItem.style.color = "black";
+      }
+      menuBackDrop.style.opacity = "0";
+      menuBackDrop.style.visibility = "hidden";
+      lastSelectedItem = null;
+    });
+
+    function positionBackdrop(item: HTMLElement) {
+      const { left, top, width, height } = item.getBoundingClientRect();
+      const parentRect = menuHeader.getBoundingClientRect();
+
+      const menuHeaderStyle = window.getComputedStyle(menuHeader);
+      const paddingLeft = parseFloat(menuHeaderStyle.paddingLeft);
+
+      const relativeLeft = left - parentRect.left - paddingLeft;
+      const relativeTop = top - parentRect.top;
+
+      menuBackDrop.style.setProperty("--left", `${relativeLeft}px`);
+      menuBackDrop.style.setProperty("--top", `${relativeTop}px`);
+      menuBackDrop.style.setProperty("--width", `${width}px`);
+      menuBackDrop.style.setProperty("--height", `${height}px`);
+    }
+  });
+</script>
+
+<!-- <script>
   document.addEventListener("DOMContentLoaded", () => {
     const listItems = document.querySelectorAll(
       "#menu-list li",
@@ -90,4 +157,32 @@ const NAV_MENUS_NAMES = ["About", "Projects", "Contact"] as const;
       lastSelectedItem = null;
     });
   });
+</script> -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const projectList = document.querySelector("#projects-list") as HTMLElement;
+
+    const projectsLink = document.querySelector(
+      "#projects-link",
+    ) as HTMLElement;
+    const contactLink = document.querySelector("#contact-link") as HTMLElement;
+
+    projectsLink?.addEventListener("click", () => {
+      projectList?.scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+
+    contactLink?.addEventListener("click", () => {
+      window?.scrollTo(0, document.body.scrollHeight);
+    });
+  });
 </script>
+
+<!-- <li class="flex">
+    <ChangeLanguage />
+    </li> -->
+<!-- <li class="px-4 py-1 flex">
+      <ChangeTheme />
+    </li> -->

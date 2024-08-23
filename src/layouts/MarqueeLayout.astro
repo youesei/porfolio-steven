@@ -6,6 +6,6 @@ interface Props {
 const props = Astro.props;
 ---
 
-<ul class={`py-5-em flex whitespace-nowrap ${props.class}`}>
+<ul class={` py-5 lg:py-5-em flex whitespace-nowrap ${props.class}`}>
   <slot />
 </ul>

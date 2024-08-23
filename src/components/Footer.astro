@@ -4,29 +4,37 @@ import ArrowUp from "./ArrowUp.astro";
 
 <footer
   id="footer"
-  class="sticky top-0 h-dvh text-white"
+  class="lg:sticky lg:top-0 h-dvh text-white"
   data-dev-name-opacity="0"
 >
-  <header class="relative z-20 bg-gray-300 h-dvh px-12">
+  <header class="relative z-20 bg-gray-300 h-dvh px-5 lg:px-12-em">
     <h1>AAAAAAAAAAAAAAAAAAAAA</h1>
   </header>
+
   <main
-    class="xl:sticky xl:bottom-0 py-16 bg-black h-dvh px-5 xl:px-12 flex flex-col justify-between xl:gap-y-36"
+    class="lg:sticky flex flex-col justify-between lg:bottom-0 py-16 lg:pb-16-em lg:pt-20-em bg-black h-dvh px-5 overflow-hidden lg:px-12-em"
   >
-    <h3
-      class="xl:text-[5.5rem] text-[2.5rem] tracking-tight leading-none max-w-3xl xl:mt-[-1.6rem]"
-    >
-      Nice to meet you, Let’s connect.
-    </h3>
+    <header class="xl:max-w-2.2xl-em">
+      <h3
+        class="text-5xl xs:text-4.8-rem md:text-8xl leading-tight tracking-tight"
+      >
+        Nice to meet you, Let’s connect.
+      </h3>
+    </header>
 
-    <section class="flex flex-col gap-y-7">
-      <p class="xl:text-2xl text-xl text-gray-600">Find me elsewhere on web.</p>
+    <section class="flex flex-col gap-y-6 md:gap-y-5-em">
+      <p class="text-2xl lg:text-2xl-em text-gray-600">
+        Find me elsewhere on web.
+      </p>
 
-      <ul id="contacts" class="flex flex-col xl:flex-row gap-y-4 xl:gap-x-8">
-        <li class="text-xl xl:text-2xl">
+      <ul
+        id="contacts"
+        class="flex flex-col xs:flex-row gap-y-4 xs:gap-x-10-em"
+      >
+        <li>
           <a
             style="--underline-color: #4b5563; --underline-before-color: #fff;"
-            class="underline-hover pb-2 inline-block"
+            class="underline-hover pb-2 inline-block text-xl lg:text-2xl-em"
             href="https://www.google.com"
             target="_blank"
             referrerpolicy="no-referrer"
@@ -34,10 +42,10 @@ import ArrowUp from "./ArrowUp.astro";
             LinkedIn
           </a>
         </li>
-        <li class="text-xl xl:text-2xl">
+        <li>
           <a
             style="--underline-color: #4b5563; --underline-before-color: #fff;"
-            class="underline-hover pb-2 inline-block"
+            class="underline-hover pb-2 inline-block text-xl lg:text-2xl-em"
             href="https://www.google.com"
             target="_blank"
             referrerpolicy="no-referrer"
@@ -49,12 +57,14 @@ import ArrowUp from "./ArrowUp.astro";
     </section>
 
     <footer class="flex justify-between items-center">
-      <p class="xl:text-xl text-base">&copy2024 - Esteven Zapata</p>
+      <p class="text-base lg:text-xl-em">&copy2024 - Esteven Zapata</p>
+
       <button
-        class="bg-white go-top xl:w-16 xl:h-16 w-10 h-10 rounded-full flex items-center justify-center"
+        class="bg-white go-top h-10 w-10 md:h-12 md:w-12 lg:h-16-em lg:w-16-em rounded-full flex items-center justify-center"
       >
-        <!-- <ArrowUp width="22" /> -->
-        <ArrowUp width="14" />
+        <span class="h-4 w-4 lg:h-6-em lg:w-6-em">
+          <ArrowUp width="100%" height="100%" />
+        </span>
       </button>
     </footer>
   </main>
@@ -77,20 +87,20 @@ import ArrowUp from "./ArrowUp.astro";
       transform: translateY(0);
     }
     100% {
-      transform: translateY(-40px);
+      transform: translateY(-200%);
     }
   }
 
   @keyframes arrow-down {
     0% {
-      transform: translateY(40px);
+      transform: translateY(200%);
     }
     100% {
       transform: translateY(0);
     }
   }
 
-  .go-top:hover svg path {
+  .go-top:hover span {
     animation:
       arrow-up 0.2s ease-in-out forwards,
       arrow-down 0.2s ease-in-out forwards 0.2s;

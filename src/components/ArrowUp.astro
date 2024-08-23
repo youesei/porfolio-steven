@@ -1,11 +1,12 @@
 ---
-const { width } = Astro.props;
+interface Props extends astroHTML.JSX.SVGAttributes {}
+const { width, height } = Astro.props;
 ---
 
 <svg
   display="block"
   width={width}
-  height="100%"
+  height={height}
   viewBox="0 0 20 22"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"

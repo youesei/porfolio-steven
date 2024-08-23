@@ -1,39 +1,16 @@
 ---
 interface Props {
-  menuName: string;
+  id: string;
+  label: string;
 }
-const { menuName } = Astro.props;
+const { label, id } = Astro.props;
 ---
 
 <li class="text-sm-em xs:text-base lg:text-base-em">
   <a
+    id={id}
     class="cursor-pointer leading-normal px-4-em text-base-em xs:text-base md:text-base-em py-1-em block transition-all duration-200 ease-in-out"
-    id="button-about"
   >
-    {menuName}
+    {label}
   </a>
 </li>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const projectList = document.querySelector("#projects-list") as HTMLElement;
-
-    const projectsLink = document.querySelector(
-      "#projects-link",
-    ) as HTMLElement;
-    const contactLink = document.querySelector("#contact-link") as HTMLElement;
-
-    projectsLink?.addEventListener("click", () => {
-      projectList?.scrollIntoView({
-        behavior: "smooth",
-      });
-    });
-
-    contactLink?.addEventListener("click", () => {
-      window?.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
-    });
-  });
-</script>

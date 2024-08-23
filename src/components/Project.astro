@@ -14,15 +14,19 @@ const { projectName, projectDescription, role, date, id, tagList } =
   Astro.props;
 ---
 
-<article class="max-w-screen-xl mb-20" id={projectName}>
-  <div class="absolute bg-blue-800 inset-x-0 h-[36rem] xl:h-[50rem] -z-10">
+<article class="lg:mb-20-em md:mb-16 mb-12 w-full" id={projectName}>
+  <div
+    class="absolute bg-blue-800 inset-x-0 xs:h-7% h-121 md:h-120 lg:h-52-em -z-10"
+  >
   </div>
 
   <header
-    class="flex flex-col justify-between xl:flex-row mb-12 xl:mb-28 pt-12 xl:pt-20"
+    class="flex justify-between flex-row mb-14 lg:mb-28.5-em pt-16 lg:pt-20-em"
   >
-    <main class="flex flex-col max-w-2.1xl-em gap-y-24-em">
-      <section class="flex flex-col gap-10">
+    <main
+      class="flex flex-col md:max-w-2.5xl-em gap-y-12 max-w-full xs:max-w-0.5xl lg:gap-y-24-em"
+    >
+      <section class="flex flex-col gap-y-6 lg:gap-y-10-em">
         <p
           class="lg:text-sm-em text-sm font-medium flex gap-x-1-em tracking-wider-em"
         >
@@ -30,33 +34,33 @@ const { projectName, projectDescription, role, date, id, tagList } =
           <span class="text-white/50">/</span>
           <span class="text-white/50">05</span>
         </p>
-        <h3 class="lg:text-5xl-em md:text-4.5xl text-2.5xl font-bold">
+        <h3 class="lg:text-5xl-em md:text-4xl text-2.5xl font-bold">
           {projectName} - <span class="font-medium">{projectDescription}</span>
         </h3>
       </section>
 
       <footer>
-        <ul class="flex text-base flex-col xl:flex-row gap-6 xl:gap-10">
-          <li>
-            <p class="text-white/50">Project</p>
-            <p>{projectName}</p>
+        <ul class="flex flex-col gap-y-6 xs:flex-row gap-x-10 lg:gap-x-16-em">
+          <li class="flex flex-col gap-y-1 xs:gap-y-2 md:gap-y-2-em">
+            <p class="text-white/50 text-base lg:text-s-inherit">Project</p>
+            <p class="text-base lg:text-s-inherit">{projectName}</p>
           </li>
 
-          <li>
-            <p class="text-white/50">Role</p>
-            <p>{role}</p>
+          <li class="flex flex-col gap-y-1 xs:gap-y-2 md:gap-y-2-em">
+            <p class="text-white/50 text-base lg:text-s-inherit">Role</p>
+            <p class="text-base lg:text-s-inherit">{role}</p>
           </li>
 
-          <li>
-            <p class="text-white/50">Date</p>
-            <p>{date}</p>
+          <li class="flex flex-col gap-y-1 xs:gap-y-2 md:gap-y-2-em">
+            <p class="text-white/50 text-base lg:text-s-inherit">Date</p>
+            <p class="text-base lg:text-s-inherit">{date}</p>
           </li>
         </ul>
       </footer>
     </main>
 
     <aside class="hidden md:flex flex-col justify-center">
-      <ul class="flex flex-col gap-3">
+      <ul class="flex flex-col items-end gap-y-4 md:gap-y-4-em">
         {tagList.map((tag) => <Tag tag={tag} />)}
       </ul>
     </aside>
@@ -70,22 +74,20 @@ const { projectName, projectDescription, role, date, id, tagList } =
       class="rounded-lg w-full col-span-2 object-cover opacity-1 aspect-[16/9]"
       src="/image-1.webp"
     />
-    <!-- <div class="grid grid-cols-2 gap-x-12"> -->
     <img
       height="500px"
       width="500px"
       loading="lazy"
-      class="rounded-lg w-full col-span-2 xl:col-span-1 object-cover opacity-1 aspect-[1/1]"
+      class="rounded-lg w-full col-span-2 xs:col-span-1 object-cover opacity-1 aspect-[1/1]"
       src="/image-2.webp"
     />
     <img
       height="500px"
       width="500px"
       loading="lazy"
-      class="rounded-lg w-full col-span-2 xl:col-span-1 object-cover opacity-1 aspect-[1/1]"
+      class="rounded-lg w-full col-span-2 xs:col-span-1 object-cover opacity-1 aspect-[1/1]"
       src="/image-3.webp"
     />
-
     <img
       height="500px"
       width="500px"
